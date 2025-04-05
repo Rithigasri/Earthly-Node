@@ -4,15 +4,7 @@ pipeline {
     stages {
         stage('Build with Earthly') {
             steps {
-                sh '''
-                    if ! command -v earthly &> /dev/null; then
-                        curl -LO https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64
-                        chmod +x earthly-linux-amd64
-                        sudo mv earthly-linux-amd64 /usr/local/bin/earthly
-                    fi
-
-                    earthly +docker
-                '''
+                sh 'earthly +docker'
             }
         }
 
